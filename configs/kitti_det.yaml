@@ -1,0 +1,26 @@
+OUTPUT_DIR: ./output/kitti_det
+DATASET: kitti
+DATA_DIR: ./data/kitti/processed/training
+CKPT_PATH: ./ckpts/kitti/latest.pth
+EXP:
+  USE_DETECTION: true
+  MEAN_CODE_PATH: ./ckpts/kitti/mean.npz
+LOSS:
+  USE_CD: false
+  CD_WEIGHT: 0.4
+  CD_SMOOTH_L1_LOSS_BETA: 0.04
+  SHAPE_LOSS_TYPE: smooth_l1
+CD_LOSS:
+  USE_PREV_PC: true
+  USE_INIT_PC: true
+  USE_AGG_PC: true
+  PREV_PC_DIR: double
+  INIT_PC_DIR: double
+  AGG_PC_DIR: y-x
+  MERGE_INIT_TO_PREV: false
+  MERGE_AGG_TO_PREV: false
+SEARCH_CODE:
+  IF_FINETUNE: true
+  PREV_REG_WEIGHT: 10
+  INIT_REG_WEIGHT: 20
+  ZERO_REG_WEIGHT: 10
